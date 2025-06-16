@@ -79,6 +79,3 @@ Memories MERN Stack is a full-stack web application built with MongoDB, Express.
 - `MONGODB_URI` - MongoDB connection string
 - `JWT_SECRET` - Secret key for JWT authentication
 
-## License
-
-This project is licensed under the MIT License.
