@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Memories MERN Stack is a full-stack web application built with MongoDB, Express.js, React, and Node.js. It allows users to create, view, and manage posts (memories) with authentication features. The application provides a seamless user experience for sharing and browsing memories.
+Memories MERN Stack is a full-stack web application built with MongoDB, Express.js, React, and Node.js. It allows users to create, view, and manage posts (memories) with authentication features. The application provides a seamless user experience for sharing and browsing memories
 
 ![image](https://github.com/user-attachments/assets/e645c704-c25f-4fc9-aa63-a31f6de000c0)
 
