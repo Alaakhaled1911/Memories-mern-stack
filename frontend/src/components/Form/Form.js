@@ -98,9 +98,15 @@ const Form = () => {
       });
     }
   }, [post]);
+  const user = useSelector((state) => state.auth.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!user) {
+      toast.error("You should login to create or edit a memory.");
+      return;
+    }
 
     if (!validate()) {
       toast.error("Please fill all required fields");
