@@ -258,29 +258,44 @@ const Form = () => {
               Upload Image{" "}
               {!currentId && <span className="text-red-500">*</span>}
             </label>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={(e) => {
-                const file = e.target.files[0];
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onload = () => {
-                    setPostData({ ...postData, selectedFile: reader.result });
-                    setErrors({ ...errors, selectedFile: "" });
-                  };
-                  reader.readAsDataURL(file);
-                }
-              }}
-              onBlur={() => handleBlur("selectedFile")}
-              className={`w-full text-gray-600 file:mr-4 file:py-2 file:px-4
-                file:rounded-lg file:border-0 file:text-sm file:font-semibold
-                file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 ${
-                  errors.selectedFile && touched.selectedFile
-                    ? "border-2 border-red-500 rounded-lg"
-                    : ""
-                }`}
-            />
+            {!currentId || !postData.selectedFile ? (
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                      setPostData({ ...postData, selectedFile: reader.result });
+                      setErrors({ ...errors, selectedFile: "" });
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
+                onBlur={() => handleBlur("selectedFile")}
+                className={`w-full text-gray-600 file:mr-4 file:py-2 file:px-4
+        file:rounded-lg file:border-0 file:text-sm file:font-semibold
+        file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 ${
+          errors.selectedFile && touched.selectedFile
+            ? "border-2 border-red-500 rounded-lg"
+            : ""
+        }`}
+              />
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPostData({ ...postData, selectedFile: "" });
+                    if (fileInputRef.current) fileInputRef.current.value = "";
+                  }}
+                  className="mt-2 text-sm text-red-600 hover:text-red-800"
+                >
+                  Change Image
+                </button>
+              </>
+            )}
             {errors.selectedFile && touched.selectedFile && (
               <p className="mt-1 text-sm text-red-600">{errors.selectedFile}</p>
             )}

@@ -94,7 +94,7 @@ export const likePost = createAsyncThunk("posts/likePost", async (id) => {
 
 const initialState = {
   posts: [],
-  loading: "idle",
+  loading: false,
   error: null,
   currentId: null,
 };
@@ -112,34 +112,34 @@ const postSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
-      state.loading = "loading";
+      state.loading = true;
     });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.posts = action.payload;
     });
     builder.addCase(fetchPosts.rejected, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.error = action.error.message;
     });
 
     builder.addCase(createPost.pending, (state) => {
-      state.loading = "loading";
+      state.loading = true;
     });
     builder.addCase(createPost.fulfilled, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.posts.push(action.payload);
     });
     builder.addCase(createPost.rejected, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.error = action.error.message;
     });
 
     builder.addCase(updatePost.pending, (state) => {
-      state.loading = "loading";
+      state.loading = true;
     });
     builder.addCase(updatePost.fulfilled, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       const index = state.posts.findIndex(
         (post) => post._id === action.payload._id
       );
@@ -148,26 +148,26 @@ const postSlice = createSlice({
       }
     });
     builder.addCase(updatePost.rejected, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.error = action.error.message;
     });
 
     builder.addCase(deletePost.pending, (state) => {
-      state.loading = "loading";
+      state.loading = true;
     });
     builder.addCase(deletePost.fulfilled, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.posts = state.posts.filter((post) => post._id !== action.payload);
     });
     builder.addCase(deletePost.rejected, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.error = action.error.message;
     });
     builder.addCase(likePost.pending, (state) => {
-      state.loading = "loading";
+      state.loading = true;
     });
     builder.addCase(likePost.fulfilled, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
 
       const updatedPost = action.payload;
 
@@ -181,7 +181,7 @@ const postSlice = createSlice({
     });
 
     builder.addCase(likePost.rejected, (state, action) => {
-      state.loading = "idle";
+      state.loading = false;
       state.error = action.error.message;
     });
   },
