@@ -1,5 +1,3 @@
-import React from "react";
-import Navbar from "../Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
