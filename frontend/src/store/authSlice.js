@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_ENDPOINTS } from "../config/api";
 
-const url = "http://localhost:7000/api/users";
+const url = API_ENDPOINTS.USERS;
 
 const initialState = {
   user: null,

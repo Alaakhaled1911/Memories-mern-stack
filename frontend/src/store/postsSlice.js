@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_ENDPOINTS } from "../config/api";
 
-const url = "http://localhost:7000/api/posts";
+const url = API_ENDPOINTS.POSTS;
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await fetch(url);
