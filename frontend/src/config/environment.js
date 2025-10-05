@@ -11,7 +11,7 @@ const getApiBaseUrl = () => {
 
   // In production, use the deployed Vercel URL
   if (isProduction) {
-    return "https://memories-mern-stack-hvyh-qjhj7cp8x.vercel.app";
+    return "https://memories-mern-stack-hvyh-qjhj7cp8x.vercel.app/api";
   }
 
   // Fallback

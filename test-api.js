@@ -1,7 +1,8 @@
 // Simple API test script
 // Run with: node test-api.js
 
-const API_BASE_URL = "https://memories-mern-stack-hvyh-qjhj7cp8x.vercel.app";
+const API_BASE_URL =
+  "https://memories-mern-stack-hvyh-qjhj7cp8x.vercel.app/api";
 
 async function testAPI() {
   console.log("Testing API endpoints...\n");
